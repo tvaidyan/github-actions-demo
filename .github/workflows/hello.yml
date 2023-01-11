@@ -48,11 +48,3 @@ jobs:
         with:
           name: frontend-site
           path: hello-world/dist
-          
-      - name: attempt 2
-        uses: actions/upload-artifact@v3
-        with:
-          name: frontend-site-2
-          path: dist
-          
-      - run: ls -al
