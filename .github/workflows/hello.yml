@@ -35,6 +35,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
       - name: npm install, build, and test
+        working-directory: hello-world
         run: |
           npm install
           npm run build --if-present
@@ -44,4 +45,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: node-app
-          path: .
+          path: ../
