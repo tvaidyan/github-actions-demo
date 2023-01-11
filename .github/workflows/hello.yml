@@ -32,6 +32,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
+          working-directory: hello-world
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
       - name: npm install, build, and test
