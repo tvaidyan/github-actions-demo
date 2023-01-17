@@ -16,6 +16,8 @@ on:
 # Setup environment variables
 env:
   NODE_VERSION: '16.13'
+  AZURE_WEBAPP_NAME: 'github-actions-demo-42'
+  AZURE_WEBAPP_PACKAGE_PATH: 'hello-world/dist'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -47,3 +49,10 @@ jobs:
         with:
           name: frontend-site
           path: hello-world/dist
+          
+      - name: Deploy to Azure App Service
+        uses: azure/webapps-deploy@v2
+        with:
+          name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
